@@ -36,19 +36,47 @@ print(u2.nombre_uni)
 
 
 # =========================
-# ACCESO Y MODIFICACIÓN
+# ACCESO DE ATRIBUTOS
 # =========================
+class Producto:
+    impuesto = 0.21  # Atributo de clase
+
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+# Creamos un producto
+laptop = Producto("Laptop", 1000)
+
+# Accedemos a sus atributos
+print(laptop.nombre)    # Atributo de instancia
+print(laptop.precio)    # Atributo de instancia
+print(laptop.impuesto)  # Atributo de clase (accedido desde la instancia)
+print(Producto.impuesto)  # Atributo de clase (accedido desde la clase)
+
+
 class Coche:
-    def __init__(self, marca, color):
+    def __init__(self, marca, modelo, color):
         self.marca = marca
+        self.modelo = modelo
         self.color = color
+        self.kilometraje = 0
 
-c = Coche("Toyota", "Azul")
-print(c.color)
+# =========================
+# MODIFICACIÓN DE ATRIBUTOS
+# =========================
 
-c.color = "Rojo"
-print(c.color)
+# Creamos un coche nuevo
+mi_coche = Coche("Toyota", "Corolla", "Azul")
+print(f"Color inicial: {mi_coche.color}")  # Imprime: Color inicial: Azul
+print(f"Kilometraje inicial: {mi_coche.kilometraje}")  # Imprime: Kilometraje inicial: 0
 
+# Modificamos sus atributos
+mi_coche.color = "Rojo"  # Pintamos el coche
+mi_coche.kilometraje = 1500  # Actualizamos el kilometraje
+
+print(f"Nuevo color: {mi_coche.color}")  # Imprime: Nuevo color: Rojo
+print(f"Kilometraje actual: {mi_coche.kilometraje}")  # Imprime: Kilometraje actual: 1500
 
 # =========================
 # ATRIBUTOS DINÁMICOS
@@ -57,11 +85,16 @@ class Persona:
     def __init__(self, nombre):
         self.nombre = nombre
 
-p = Persona("Juan")
-p.edad = 30
-p.profesion = "Ingeniero"
+# Creamos una persona
+juan = Persona("Juan")
 
-print(p.nombre, p.edad, p.profesion)
+# Añadimos atributos dinámicamente
+juan.edad = 30
+juan.profesion = "Ingeniero"
+
+print(f"{juan.nombre} tiene {juan.edad} años y es {juan.profesion}")
+# Imprime: Juan tiene 30 años y es Ingeniero
+
 
 
 # =========================
